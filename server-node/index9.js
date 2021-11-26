@@ -5,7 +5,6 @@ const express = require('express');
 const app = express();
 const path = require('path');
 
-app.use(express.static('public'))
 
 /* Function callName() is executed whenever URL is of the form localhost:3000/name
 */
