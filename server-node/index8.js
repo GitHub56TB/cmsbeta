@@ -3,53 +3,61 @@
 
 const express = require('express');
 const app = express();
-const path = require('path');
+
 
 
 /* Function callName() is executed whenever URL is of the form localhost:3000/name
 */
 app.get('/', (request, response) => {
-// Line below - Just for stus while testing
-  console.log(path.resolve(__dirname, 'index.html'));
+  response.json({
+    name: 'Tester 1'
 
-  response.sendFile(path.resolve(__dirname, 'index.html'))
+  })
 
 })
 
 app.get('/about', (request, response) => {
-// Line below - Just for stus while testing
-    console.log(path.resolve(__dirname, 'about.html'));
-
-    response.sendFile(path.resolve(__dirname, 'about.html'))
+  response.send({
+    name: 'about Tester 1'
 
   })
 
-app.get('/contact', (request, response) => {
-  // Line below - Just for stus while testing
-    console.log(path.resolve(__dirname, 'contact.html'));
+})
 
-    response.sendFile(path.resolve(__dirname, 'contact.html'))
 
-  })
 
-  app.get('/beta', (request, response) => {
-    // Line below - Just for stus while testing
-      console.log(path.resolve(__dirname, 'nodebeta.php'));
-
-      response.sendFile(path.resolve(__dirname, 'nodebeta.php'))
-
-    })
-
-    app.get('/hbeta', (request, response) => {
-      // Line below - Just for stus while testing
-        console.log(path.resolve(__dirname, 'beta.html'));
-
-        response.sendFile(path.resolve(__dirname, 'beta.html'))
-
-      })
 app.listen(3000, () => {
    console.log('Server running on port 3000');
 });
+
+//app.listen(3000, function(){
+//   console.log('Server running on port 3000');
+//});
+
+
+
+function callName(req, res) {
+/* Use child_process.spawn method from child_process module and assign it to variable spawn
+*/
+    var spawn = require("child_process").spawn;
+
+// Parameters passed in spawn -
+//1. type_of_script
+//2. List containing PATH of the script and arguments for the script
+
+//Example: http://localhost:3000/name?firstname=Mike&lastname=Will
+// so, First Name = Mike and Last Name = Will
+    var process = spawn('php',["./hello.php",
+                  req.query.firstname,
+                  req.query.lastname]);
+
+    process.stdout.on('data', function(data){
+      console.log('data received from PHP Script ::' + data.toString());
+      res.send(data.toString());
+
+    });
+
+}
 
 
 
