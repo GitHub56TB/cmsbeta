@@ -8,35 +8,27 @@ const contactPage = fs.readFileSync('contact.html')
 
 const homePage = fs.readFileSync('index.html')
 
-const betaPagePHP = fs.readFileSync('beta.html')
-
-const jsPagePHP = fs.readFileSync('jsbeta.php')
+const betaPage = fs.readFileSync('beta.php')
 
 
 const server = http.createServer((request, response) => {
    
   if (request.url === '/about'){
 
-    return response.end(aboutPage)
+    return response.end('THE ABOUT PAGE')
 
   } else if (request.url === '/contact'){
 
-      return response.end(contactPage)
+      return response.end('THE CONTACT PAGE')
 
   } else if (request.url === '/'){
 
-      return response.end(homePage)
+      return response.end('THE HOME PAGE')
 
   } else if (request.url === '/beta'){
 
-      return response.end(betaPagePHP)
+      return response.end('CMS PHP BETA PROTOTYPE HOME PAGE')
 
-
-  } else if (request.url === '/jsbeta.php'){
-
-      return response.end(jsPagePHP)
-
-   
   } else {
 
       response.writeHead(404)
