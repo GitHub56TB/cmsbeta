@@ -1,51 +1,14 @@
-
-/*
 //Node JS Server Code
 //Import express JS module into app and create its variable.
 
 const express = require('express');
+const app = express();
 const path = require('path');
 
-//const expressEdge = require('express-edge');
+app.use(express.static('public'))
 
-const app = new express();
-
-//app.use(expressEdge);
-
-//app.set('views', `${__dirname}/views`);
-
-const engine  = require('express-edge');
-
-// Automatically sets view engine and adds dot notation to app.render
-app.use(engine)
-app.set('views', `${__dirname}/views`);
-
-app.get('/', (req, res) => {
-  res.render('index');
-});
-
+/* Function callName() is executed whenever URL is of the form localhost:3000/name
 */
-
-const express = require('express');
-const path = require('path');
-
-const expressEdge = require('express-edge');
-const app = new express();
-
-app.use(express.static('public'));
-app.use(expressEdge);
-
-app.set('views', `${__dirname}/views`);
-
-app.get('/', (req, res) => {
-  res.render('index');
-});
-
-/*
-
-app.use(express.static('public'));
-
-
 app.get('/', (req, res) => {
 
   res.sendFile(path.resolve(__dirname, 'pages/index.html'));
@@ -76,29 +39,66 @@ app.get('/contact.html', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'pages/contact.html'));
 
 })
-*/
+
 app.listen(4000, () => {
    console.log('Server running on port 4000');
 });
 
 
-/////////////////
+
 /*
+const http = require('http')
 
-const express = require('express');
-const app = express();
-const { config, engine } = require('express-edge');
+const fs = require('fs')
 
-// Configure Edge if need to
-config({ cache: process.env.NODE_ENV === 'production' });
+const aboutPage = fs.readFileSync('about.html')
 
-// Automatically sets view engine and adds dot notation to app.render
-app.use(engine);
-app.set('views', `${__dirname}/views`);
+const contactPage = fs.readFileSync('contact.html')
 
-app.get('/', (req, res) => {
-  res.render('users.index', { users: [...] });
-});
+const homePage = fs.readFileSync('index.html')
 
-app.listen(3000);
+const betaPagePHP = fs.readFileSync('beta.html')
+
+const jsPagePHP = fs.readFileSync('jsbeta.php')
+
+
+const server = http.createServer((request, response) => {
+
+  if (request.url === '/about'){
+
+    return response.end(aboutPage)
+
+  } else if (request.url === '/contact'){
+
+      return response.end(contactPage)
+
+  } else if (request.url === '/'){
+
+      return response.end(homePage)
+
+  } else if (request.url === '/beta'){
+
+      return response.end(betaPagePHP)
+
+
+  } else if (request.url === '/jsbeta.php'){
+
+      return response.end(jsPagePHP)
+
+
+  } else {
+
+      response.writeHead(404)
+
+      response.end('HTHE PAGE WAS NOT FOUND')
+
+  }
+
+
+
+//   response.writeHead(404)
+//   response.end('HELLO NODE JS')
+ })
+
+ server.listen(3000)
 */

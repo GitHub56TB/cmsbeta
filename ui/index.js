@@ -1,28 +1,35 @@
+//Node JS Server Code
+//Import express JS module into app and create its variable.
+// https://www.npmjs.com/package/express-edge
 
 const express = require('express');
+const app = new express();
 const path = require('path');
 
-const expressEdge = require('express-edge');
-const app = new express();
+const { config, engine } = require('express-edge');
 
-app.use(express.static('public'));
-app.use(expressEdge);
+//const expressEdge = require('express-edge');
 
-app.set('views', '${__dirname}/views');
+app.use(express.static('public'))
 
+// Configure Edge if need to
+config({ cache: process.env.NODE_ENV === 'production' });
+
+// Automatically sets view engine and adds dot notation to app.render
+app.use(engine);
+app.set('views', `${__dirname}/views`);
+
+// app.use(expressEdge);
+
+// app.set('views', '${__dirname}/views');
+
+
+/* Function callName() is executed whenever URL is of the form localhost:3000/name
+*/
 app.get('/', (req, res) => {
-  res.render('index');
-});
 
-/*
-
-app.use(express.static('public'));
-
-
-app.get('/', (req, res) => {
-
-  res.sendFile(path.resolve(__dirname, 'pages/index.html'));
-//res.render('index');
+  //res.sendFile(path.resolve(__dirname, 'pages/index_x.html'));
+res.render('login');
 
 })
 // Added html for internal clicks on the web page menu items
@@ -49,7 +56,7 @@ app.get('/contact.html', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'pages/contact.html'));
 
 })
-*/
+
 app.listen(4000, () => {
    console.log('Server running on port 4000');
 });
