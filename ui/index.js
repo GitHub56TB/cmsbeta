@@ -6,6 +6,8 @@ const express = require('express');
 const app = new express();
 const path = require('path');
 
+const bodyParser = require('body-parser')
+
 const { config, engine } = require('express-edge');
 
 // https://www.npmjs.com/package/mongoose
@@ -39,6 +41,20 @@ config({ cache: process.env.NODE_ENV === 'production' });
 // Automatically sets view engine and adds dot notation to app.render
 app.use(engine);
 app.set('views', `${__dirname}/views`);
+
+// https://www.npmjs.com/package/body-parser
+// parse application/json
+app.use(bodyParser.json())
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }))
+
+app.use(function (req, res) {
+  res.setHeader('Content-Type', 'text/plain')
+  res.write('you posted:\n')
+  res.end(JSON.stringify(req.body, null, 2))
+})
+
 
 // app.use(expressEdge);
 
@@ -98,6 +114,15 @@ res.render('register');
 
 app.get('/posts/new', (req, res) => {
 res.render('create');
+})
+
+
+app.post('/posts/store', (req, res) => {
+
+  console.log(req.body);
+
+  res.redirect('/');
+
 })
 
 
