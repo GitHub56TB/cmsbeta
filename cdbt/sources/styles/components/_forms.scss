@@ -1,0 +1,50 @@
+.cdbt-form-required {
+  margin-left: 1em;
+  
+  span.label {
+    font-weight: 300;
+  }
+}
+
+.clock-mark {
+  margin-top: 5px;
+  margin-left: 1em;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.time-separater-block {
+  
+  .time-separater {
+    position: relative;
+    top: 2px;
+    left: 10px;
+    margin: 0 0;
+    font-size: 20px;
+    font-weight: 700;
+  }
+}
+
+.cdbt-entry-data-form {
+  .input-group {
+    
+    .input-group-btn .btn {
+      padding: 5px 10px;
+      min-width: 34px;
+      min-height: 26px;
+      margin-left: -1px;
+    }
+  }
+  
+  .dropdown-menu {
+    a {
+      box-shadow: none;
+    }
+  }
+  
+  .help-block {
+    clear: both;
+    display: inline-block;
+    padding-left: 1em;
+  }
+}

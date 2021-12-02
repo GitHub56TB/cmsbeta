@@ -1,12 +1,33 @@
 //Node JS Server Code
 //Import express JS module into app and create its variable.
 // https://www.npmjs.com/package/express-edge
-
+const port = 4000;
 const express = require('express');
 const app = new express();
 const path = require('path');
 
 const { config, engine } = require('express-edge');
+
+// https://www.npmjs.com/package/mongoose
+const mongoose = require('mongoose');
+
+//start mongodb server SERVICE on Mac ==> brew services start mongodb/brew/mongodb-community
+//stop mongodb server SERVICE on Mac ==> brew services stop mongodb/brew/mongodb-community
+
+// Reference Below:
+// https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/#std-label-osx-prereq
+
+// MongoDB (i.e. the mongod process) manually as a background process
+// mongod --config /usr/local/etc/mongod.conf
+// to stop manual process => ^C
+
+mongoose.connect('mongodb://localhost/my_database')
+
+// Now post needs the body parser in order to be able to retrieve
+// the data and sort of "translate it" to JS, for that you need the body parser.
+
+// app.use(bodyParser.urlencoded({extended: false})) //Post Body Parser
+
 
 //const expressEdge = require('express-edge');
 
@@ -29,7 +50,7 @@ app.set('views', `${__dirname}/views`);
 app.get('/', (req, res) => {
 
   //res.sendFile(path.resolve(__dirname, 'pages/index_x.html'));
-res.render('login');
+res.render('index');
 
 })
 // Added html for internal clicks on the web page menu items
@@ -39,24 +60,48 @@ app.get('/index.html', (req, res) => {
 
 })
 
-app.get('/about.html', (req, res) => {
+//app.get('/about.html', (req, res) => {
+app.get('/about', (req, res) => {
 
-  res.sendFile(path.resolve(__dirname, 'pages/about.html'));
+//  res.sendFile(path.resolve(__dirname, 'pages/about.html'));
+res.render('about');
+})
+
+//app.get('/post.html', (req, res) => {
+app.get('/post', (req, res) => {
+
+//  res.sendFile(path.resolve(__dirname, 'pages/post.html'));
+res.render('post');
 
 })
 
-app.get('/post.html', (req, res) => {
+//app.get('/login.html', (req, res) => {
+app.get('/login', (req, res) => {
 
-  res.sendFile(path.resolve(__dirname, 'pages/post.html'));
-
-})
-
-app.get('/contact.html', (req, res) => {
-
-  res.sendFile(path.resolve(__dirname, 'pages/contact.html'));
+//  res.sendFile(path.resolve(__dirname, 'pages/login.html'));
+res.render('login');
 
 })
 
-app.listen(4000, () => {
-   console.log('Server running on port 4000');
+//app.get('/contact.html', (req, res) => {
+app.get('/contact', (req, res) => {
+
+//  res.sendFile(path.resolve(__dirname, 'pages/contact.html'));
+res.render('contact');
+})
+
+
+app.get('/register', (req, res) => {
+res.render('register');
+})
+
+
+app.get('/posts/new', (req, res) => {
+res.render('create');
+})
+
+
+
+app.listen(port, () => {
+   console.log("Server listening on port " + port);
 });

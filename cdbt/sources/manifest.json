@@ -1,0 +1,69 @@
+{
+  "dependencies": {
+    "cdbt-main.js": {
+      "files": [
+        "scripts/cdbt-main.js"
+      ]
+    },
+    "cdbt-admin.js": {
+      "files": [
+        "scripts/cdbt-admin.js"
+      ]
+    },
+    "cdbt-table-creator.js": {
+      "files": [
+        "scripts/jquery-ui.js",
+        "scripts/cdbt-table-creator.js"
+      ]
+    },
+    "cdbt-main.css": {
+      "files": [
+        "styles/cdbt-main.scss"
+      ],
+      "main": true
+    },
+    "cdbt-admin.css": {
+      "files": [
+        "styles/cdbt-admin.scss"
+      ],
+      "main": true
+    },
+    "cdbt-table-creator.css": {
+      "files": [
+        "styles/cdbt-table-creator.scss"
+      ],
+      "main": true
+    },
+    "jquery.js": {
+      "bower": ["jquery"]
+    },
+    "bootstrap.js": {
+      "bower": ["bootstrap"]
+    },
+    "fuelux.js": {
+      "bower": [
+        "fuelux",
+        "moment"
+      ]
+    },
+    "underscore.js": {
+      "bower": ["underscore"]
+    },
+    "jquery.kinetic.js": {
+      "bower": ["jquery.kinetic"]
+    },
+      "clipboard.js": {
+      "bower": ["clipboard"]
+    },
+    "fuelux.css": {
+      "bower": ["fuelux"]
+    }
+  },
+  "paths": {
+    "source": "sources/",
+    "dist": "assets/"
+  },
+  "config": {
+    "devUrl": "localhost:8000"
+  }
+}

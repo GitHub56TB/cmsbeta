@@ -1,0 +1,40 @@
+#cdbtModal {
+  
+  .modal-body {
+    
+    .preview-image-body {
+      overflow: hidden;
+      overflow-x: auto;
+      
+      img {
+        width: auto;
+        height: auto;
+      }
+      
+    }
+    
+    .describe-file-info {
+      
+      th {
+        background-color: #f4f4f4;
+      }
+      
+    }
+    
+    .view-full-content {
+      width: 100%;
+      padding: 8px;
+      background-color: #f7f7f7;
+      border-color: #d1d1d1;
+      
+      &:hover, &:active, &:focus {
+        background-color: #f7f7f7;
+        border-color: #d1d1d1;
+        box-shadow: 0 0 0 transparent;
+      }
+    }
+    
+  }
+  
+  
+}

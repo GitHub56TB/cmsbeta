@@ -1,0 +1,410 @@
+.cdbt-table-wrapper {
+  position: relative;
+  
+  .panel-heading {
+    .cdbt-table-views, .cdbt-table-filters, .cdbt-table-editor {
+      margin-left: .75em;
+    }
+    
+    .align-right .cdbt-table-views+.cdbt-table-filters {
+      margin-left: 0;
+    }
+    
+    .align-left .cdbt-table-filters {
+      margin-left: 0;
+    }
+  }
+  
+  .dropdown-menu {
+    
+    a {
+      box-shadow: 0 0 0 0 transparent;
+    }
+  }
+  
+  .panel-body {
+    
+    .loading {
+      margin: 20px auto;
+      width: 100%;
+      text-align: center;
+    }
+  }
+  
+  .btn.disabled, .btn[disabled], .btn[disabled=disabled], fieldset[disabled] .btn {
+    min-height: 32px;
+    margin: auto 0;
+    padding: 6px 12px;
+    
+    &:hover, &:focus, &:active {
+      min-height: 32px;
+      padding: 6px 12px;
+      border: 1px solid #ccc;
+      background-color: #fff;
+      color: #333;
+      opacity: .65;
+    }
+  }
+  
+  .input-group {
+    
+    .input-group-btn .btn {
+      min-width: 29px;
+      min-height: 34px;
+      margin-left: -1px;
+    }
+  }
+  
+  .panel-table-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    overflow-x: auto;
+    
+    &.kinetic-active {
+      width: 100%;
+      
+      table {
+        box-shadow: 0 2px 1px 1px #ddd;
+      }
+    }
+    &.kinetic-moving-left, &.kinetic-moving-right {
+      width: calc( 100% + 1px );
+    }
+    
+    table {
+      margin: 0;
+      table-layout: fixed;
+      color: #333;
+      
+      thead>tr>th, tfoot>tr>th {
+        position: relative;
+        width: 100%;
+        min-width: 4em;
+        vertical-align: middle;
+        
+        label {
+          min-width: 4em;
+        }
+        
+        &.sorted {
+          background-color: $info;
+          color: #fff;
+          
+          label {
+            max-width: calc( 100% - 2em );
+          }
+        }
+        
+        &.editable-checkbox {
+          background-color: #fff;
+          
+          .checkbox {
+            text-align: center;
+            vertical-align: middle;
+            
+            label {
+              display: inline-block;
+              margin: 0 auto;
+              min-width: inherit;
+            }
+          }
+        }
+      }
+      thead>tr>th.sortable.sorted {
+        
+        &.sortdir-asc:after {
+          position: absolute;
+          top: calc(50% - 1em);
+          right: .5em;
+          font-family: 'FontAwesome';
+          content: "\f0de";
+          color: #fff;
+        }
+        
+        &.sortdir-desc:after {
+          position: absolute;
+          top: calc(50% - 1em);
+          right: .5em;
+          font-family: 'FontAwesome';
+          content: "\f0dd";
+          color: #fff;
+        }
+      }
+      .hidden-index-row {
+        thead {
+          display: none;
+        }
+        
+        tfoot {
+          display: none;
+        }
+      }
+      tbody>tr>td {
+        position: relative;
+        min-width: 4em;
+        vertical-align: middle;
+        
+        &.no-item {
+          padding: 20px 0;
+          height: 60px;
+          text-align: center;
+          
+          .abs-text {
+            display: inline-block;
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            color: #b9b9b9;
+            
+          }
+        }
+        
+        &.editable-checkbox {
+          background-color: #f0f0f0;
+          
+          .checkbox {
+            margin: 0 auto;
+            padding-top: 2px;
+            padding-left: 2px;
+            text-align: center;
+            vertical-align: middle;
+          }
+          
+        }
+        
+        span {
+          word-wrap: break-word;
+          
+          &.data-numric {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+          }
+          
+          &.copied, .copied {
+            background-color: $primary;
+            color: #fff;
+          }
+        }
+        
+        textarea {
+          /* &.data-text, .data-tinytext, .data-midiumtext, data-longtext {*/
+          overflow: hidden;
+          width: 100%;
+          min-width: 4em;
+          height: auto;
+          resize: none;
+          padding: 0;
+          border: 0;
+          background-color: transparent;
+          box-shadow: 0 0 0 transparent;
+          white-space: normal;
+          word-wrap: break-word;
+          user-select: all;
+          
+          &:hover, &:active, &:focus {
+            background-color: transparent;
+            box-shadow: 0 0 0 transparent;
+            border: 0;
+          }
+          
+          &.copied {
+            background-color: $primary;
+            color: #fff;
+          }
+        }
+        
+      }
+      
+      tbody>tr.selectable {
+        
+        &.selected td {
+          background-color: $selected;
+          color: $selected-text;
+        }
+      }
+      a, a:hover {
+      box-shadow: none;
+      }
+      .btn {
+        border-bottom: solid 1px #ccc!important;
+      }
+    }
+  }
+  
+  .thumbnail-view {
+    margin: 0;
+    padding: 10px 0 0 10px;
+    
+    .cdbt-thumbnail {
+      float: left;
+      position: relative;
+      margin: 0 10px 10px 0;
+      
+      .crop-image {
+        position: relative;
+        display: inline-block;
+        padding: 0;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        max-width: 100%;
+        overflow: hidden;
+        transition: all .2s ease-in-out;
+        
+        img {
+          position: relative;
+        }
+        
+      }
+      
+      a:hover, a:active, a:focus {
+        border: 0;
+        box-shadow: 0 0 0 transparent;
+      }
+      
+      figcaption {
+        position: relative;
+        max-width: 100%;
+        max-height: 2em;
+        overflow: hidden;
+        text-align: center;
+        line-height: 2em;
+        word-wrap: break-word;
+      }
+    }
+  }
+}
+.cdbt-pagination {
+  
+  
+  .pagination {
+    margin: 0;
+    min-height: inherit;
+    border-top: 0;
+    
+    &:before, &:after {
+      background-color: transparent;
+      height: inherit;
+      position: static;
+      width: inherit;
+    }
+    
+    a, a:hover {
+      box-shadow: none;
+      border-bottom: solid 1px #ccc!important;
+      
+    }
+    
+    a.disabled {
+      cursor: default;
+      color: #b9b9b9;
+      
+      &:hover, &:active, &:focus {
+        background-color: #fff;
+      }
+    }
+  }
+}
+.cdbt-pager {
+  
+  .cdbt-table-itemization {
+    display: table-cell;
+    padding-left: .5em;
+    line-height: 34px;
+    text-align: left;
+    vertical-align: middle;
+  }
+  .cdbt-pager-body {
+    display: table;
+    text-align: right;
+    vertical-align: top;
+    
+    .pager-row {
+      display: table-row;
+      width: inherit;
+      
+      .pager-prev, .pager-control, .pager-next {
+        display: table-cell;
+        padding: 0 .5em;
+        vertical-align: middle;
+      }
+      .pager-prev {
+        width: inherit;
+        text-align: right;
+      }
+      .pager-next {
+        width: calc( 33px + 1em );
+        text-align: center;
+      }
+      .pager-control {
+        width: auto;
+        
+        label.pager-label {
+          display: table-cell;
+          padding-right: .5em;
+          text-align: left;
+          vertical-align: middle;
+          font-weight: normal;
+        }
+        
+        .cdbt-pager-combobox {
+          display: table-cell;
+          
+          input[type="text"] {
+            min-width: 3em;
+            max-width: 4em;
+            border-radius: 4px 0 0 4px;
+          }
+          
+          .input-group-btn {
+            width: auto;
+            
+            .btn {
+              border-left: 0px;
+              border-radius: 0 4px 4px 0;
+            }
+            
+            .dropdown-menu {
+              min-width: auto;
+              text-align: left;
+              
+            }
+          }
+        }
+        
+        .pager-index {
+          display: table-cell;
+          padding-left: .5em;
+          text-align: center;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+}
+/* For firefox only hack */
+@-moz-document url-prefix() {
+  .cdbt-table-wrapper {
+    .panel-table-wrapper {
+      table {
+        
+        thead>tr>th, tfoot>tr>th {
+          
+          &.editable-checkbox {
+            background-color: transparent;
+          }
+        }
+        
+        tbody>tr>td {
+          
+          &.editable-checkbox {
+            background-color: transparent;
+          }
+        }
+        
+      }
+    }
+  }
+}
